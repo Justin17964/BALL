@@ -1,4 +1,14 @@
-import SamplePage from './pages/SamplePage';
+import Home from './pages/Home';
+import PostDetail from './pages/PostDetail';
+import CreatePost from './pages/CreatePost';
+import Groups from './pages/Groups';
+import GroupDetail from './pages/GroupDetail';
+import CreateGroup from './pages/CreateGroup';
+import Trending from './pages/Trending';
+import UserProfile from './pages/UserProfile';
+import Login from './pages/Login';
+import Admin from './pages/Admin';
+import NotFound from './pages/NotFound';
 import type { ReactNode } from 'react';
 
 interface RouteConfig {
@@ -10,9 +20,64 @@ interface RouteConfig {
 
 const routes: RouteConfig[] = [
   {
-    name: 'Sample Page',
+    name: 'Home',
     path: '/',
-    element: <SamplePage />
+    element: <Home />
+  },
+  {
+    name: 'Post Detail',
+    path: '/post/:postId',
+    element: <PostDetail />
+  },
+  {
+    name: 'Create Post',
+    path: '/create-post',
+    element: <CreatePost />
+  },
+  {
+    name: 'Groups',
+    path: '/groups',
+    element: <Groups />
+  },
+  {
+    name: 'Group Detail',
+    path: '/groups/:groupId',
+    element: <GroupDetail />
+  },
+  {
+    name: 'Create Group',
+    path: '/create-group',
+    element: <CreateGroup />
+  },
+  {
+    name: 'Trending',
+    path: '/trending',
+    element: <Trending />
+  },
+  {
+    name: 'Hashtag',
+    path: '/hashtag/:hashtag',
+    element: <Home />
+  },
+  {
+    name: 'User Profile',
+    path: '/profile/:userId',
+    element: <UserProfile />
+  },
+  {
+    name: 'Admin',
+    path: '/admin',
+    element: <Admin />
+  },
+  {
+    name: 'Login',
+    path: '/login',
+    element: <Login />
+  },
+  {
+    name: 'Not Found',
+    path: '/404',
+    element: <NotFound />
   }
 ];
 
