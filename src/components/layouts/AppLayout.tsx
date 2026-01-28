@@ -38,9 +38,9 @@ export function AppLayout({ children }: AppLayoutProps) {
       <div className="p-6 border-b border-border">
         <Link to="/" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">C</span>
+            <span className="text-primary-foreground font-bold text-lg">CC</span>
           </div>
-          <span className="font-bold text-lg">Community</span>
+          <span className="font-bold text-lg">Creative Communities</span>
         </Link>
       </div>
 
@@ -105,7 +105,7 @@ export function AppLayout({ children }: AppLayoutProps) {
             {/* Logo for mobile */}
             <Link to="/" className="lg:hidden flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">C</span>
+                <span className="text-primary-foreground font-bold text-lg">CC</span>
               </div>
             </Link>
 
