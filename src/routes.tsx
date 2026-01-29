@@ -6,6 +6,9 @@ import GroupDetail from './pages/GroupDetail';
 import CreateGroup from './pages/CreateGroup';
 import Trending from './pages/Trending';
 import UserProfile from './pages/UserProfile';
+import EditProfile from './pages/EditProfile';
+import Updates from './pages/Updates';
+import CreateUpdate from './pages/CreateUpdate';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
@@ -63,6 +66,21 @@ const routes: RouteConfig[] = [
     name: 'User Profile',
     path: '/profile/:userId',
     element: <UserProfile />
+  },
+  {
+    name: 'Edit Profile',
+    path: '/profile/:userId/edit',
+    element: <EditProfile />
+  },
+  {
+    name: 'Updates',
+    path: '/updates',
+    element: <Updates />
+  },
+  {
+    name: 'Create Update',
+    path: '/updates/create',
+    element: <CreateUpdate />
   },
   {
     name: 'Admin',

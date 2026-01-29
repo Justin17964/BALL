@@ -4,7 +4,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Home, Users, Hash, User, LogOut, Menu, Shield, Plus } from 'lucide-react';
+import { Home, Users, Hash, User, LogOut, Menu, Shield, Plus, Bell } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,6 +27,8 @@ export function AppLayout({ children }: AppLayoutProps) {
     { icon: Users, label: 'Groups', path: '/groups' },
     { icon: Hash, label: 'Trending', path: '/trending' },
   ];
+
+  const updatesItem = { icon: Bell, label: 'Updates', path: '/updates' };
 
   const handleSignOut = async () => {
     await signOut();
@@ -63,6 +65,19 @@ export function AppLayout({ children }: AppLayoutProps) {
             </Link>
           );
         })}
+        
+        {/* Updates link */}
+        <Link
+          to={updatesItem.path}
+          className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+            location.pathname === updatesItem.path
+              ? 'bg-primary text-primary-foreground'
+              : 'hover:bg-accent text-foreground'
+          }`}
+        >
+          <updatesItem.icon className="w-5 h-5" />
+          <span className="font-medium">{updatesItem.label}</span>
+        </Link>
       </nav>
 
       <div className="p-4 border-t border-border">
@@ -117,9 +132,13 @@ export function AppLayout({ children }: AppLayoutProps) {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="gap-2">
                   <Avatar className="w-8 h-8">
-                    <AvatarFallback className="bg-primary text-primary-foreground">
-                      {profile?.username?.[0]?.toUpperCase() || 'U'}
-                    </AvatarFallback>
+                    {profile?.avatar_url ? (
+                      <img src={profile.avatar_url} alt={profile.username || 'User'} className="w-full h-full object-cover" />
+                    ) : (
+                      <AvatarFallback className="bg-primary text-primary-foreground">
+                        {profile?.username?.[0]?.toUpperCase() || 'U'}
+                      </AvatarFallback>
+                    )}
                   </Avatar>
                   <span className="hidden md:inline">{profile?.username || 'User'}</span>
                 </Button>
@@ -128,6 +147,10 @@ export function AppLayout({ children }: AppLayoutProps) {
                 <DropdownMenuItem onClick={() => navigate(`/profile/${user?.id}`)}>
                   <User className="w-4 h-4 mr-2" />
                   Profile
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate(`/profile/${user?.id}/edit`)}>
+                  <User className="w-4 h-4 mr-2" />
+                  Edit Profile
                 </DropdownMenuItem>
                 {profile?.role === 'admin' && (
                   <DropdownMenuItem onClick={() => navigate('/admin')}>

@@ -1,4 +1,4 @@
-# Task: Build Reddit-like Discussion Platform
+# Task: Build Reddit-like Discussion Platform - Creative Communities
 
 ## Plan
 - [x] Step 1: Initialize Supabase and setup database schema
@@ -18,6 +18,9 @@
 - [x] Step 11: Fix Discord OAuth implementation
 - [x] Step 12: Enhance admin panel with stats and content moderation
 - [x] Step 13: Add Netlify deployment configuration
+- [x] Step 14: Add profile editing with username change and avatar upload
+- [x] Step 15: Create Updates page for admin announcements
+- [x] Step 16: Allow admins to delete any post
 
 ## Notes
 - Using username + password, Google SSO, and Discord OAuth for authentication
@@ -30,3 +33,9 @@
 - Netlify deployment ready with netlify.toml, _redirects, and comprehensive deployment guide
 - Environment variables documented in .env.example
 - Complete README.md with deployment instructions
+- Users can edit their profile (username, bio, avatar)
+- Avatar upload with 1MB size limit to storage bucket
+- Updates page for admin announcements
+- Admins can delete any post, users can only delete their own
+- Updates navigation added to sidebar
+- Edit Profile link added to user dropdown menu

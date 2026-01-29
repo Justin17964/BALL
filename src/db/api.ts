@@ -133,6 +133,29 @@ export async function createPost(title: string, content: string, hashtags: strin
 }
 
 export async function deletePost(postId: string) {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error('Not authenticated');
+
+  // Check if user is admin or post author
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
+
+  const { data: post } = await supabase
+    .from('posts')
+    .select('author_id')
+    .eq('id', postId)
+    .single();
+
+  if (!profile || !post) throw new Error('Post not found');
+
+  // Allow deletion if user is admin or post author
+  if (profile.role !== 'admin' && post.author_id !== user.id) {
+    throw new Error('Not authorized to delete this post');
+  }
+
   const { error } = await supabase
     .from('posts')
     .delete()
@@ -515,6 +538,67 @@ export async function updateProfile(userId: string, updates: Partial<Profile>) {
     .from('profiles')
     .update(updates)
     .eq('id', userId);
+
+  if (error) throw error;
+}
+
+export async function uploadAvatar(userId: string, file: File) {
+  const fileExt = file.name.split('.').pop();
+  const fileName = `${userId}/avatar.${fileExt}`;
+
+  const { error: uploadError } = await supabase.storage
+    .from('avatars')
+    .upload(fileName, file, { upsert: true });
+
+  if (uploadError) throw uploadError;
+
+  const { data: { publicUrl } } = supabase.storage
+    .from('avatars')
+    .getPublicUrl(fileName);
+
+  await updateProfile(userId, { avatar_url: publicUrl });
+
+  return publicUrl;
+}
+
+// Updates API
+export async function getUpdates() {
+  const { data, error } = await supabase
+    .from('updates')
+    .select(`
+      *,
+      author:profiles!updates_author_id_fkey(id, username, avatar_url)
+    `)
+    .order('created_at', { ascending: false })
+    .limit(50);
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function createUpdate(title: string, content: string) {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error('Not authenticated');
+
+  const { data, error } = await supabase
+    .from('updates')
+    .insert({
+      title,
+      content,
+      author_id: user.id,
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function deleteUpdate(updateId: string) {
+  const { error } = await supabase
+    .from('updates')
+    .delete()
+    .eq('id', updateId);
 
   if (error) throw error;
 }

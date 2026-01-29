@@ -88,4 +88,17 @@ export interface Vote {
   created_at: string;
 }
 
+export interface Update {
+  id: string;
+  title: string;
+  content: string;
+  author_id: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface UpdateWithDetails extends Update {
+  author?: Profile;
+}
+
 export type SortType = 'hot' | 'new' | 'top';

@@ -6,7 +6,7 @@
 Community Discussion Platform
 
 ### 1.2 Application Description
-A general discussion platform similar to Reddit, where users can create posts, engage in discussions, form communities (groups), and interact through comments and voting systems. All posts must be tagged with topic hashtags for better organization and discoverability. The platform includes an admin panel for content moderation and management.
+A general discussion platform similar to Reddit, where users can create posts, engage in discussions, form communities (groups), and interact through comments and voting systems. All posts must be tagged with topic hashtags for better organization and discoverability. The platform includes an admin panel for content moderation and management, as well as an updates page where admins can post platform announcements.
 
 ## 2. Core Features
 
@@ -17,29 +17,31 @@ A general discussion platform similar to Reddit, where users can create posts, e
   - Email/password login
 - All users must be able to authenticate using any of the above methods
 
-### 2.2 Post Management
+### 2.2 User Profile Management
+- Users can change their account names
+- Users can add a logo (profile picture/avatar)
+- Display user information
+- Show user's post history
+- Show user's comment history
+- Display groups the user has joined
+
+### 2.3 Post Management
 - Users can create posts with title and content
 - Each post must include at least one hashtag topic (e.g., #technology, #gaming, #news)
 - Posts support text content
 - Users can upvote/downvote posts
 - Posts display vote count and comment count
 
-### 2.3 Comment System
+### 2.4 Comment System
 - Users can comment on posts
 - Support for nested replies to comments
 - Users can upvote/downvote comments
 
-### 2.4 Community/Group Management
+### 2.5 Community/Group Management
 - Users can create their own groups (similar to subreddits)
 - Each group has a name and description
 - Users can join/leave groups
 - Posts can be published within specific groups
-
-### 2.5 User Profiles
-- Display user information
-- Show user's post history
-- Show user's comment history
-- Display groups the user has joined
 
 ### 2.6 Content Discovery
 - Browse posts by hashtag topics
@@ -50,10 +52,16 @@ A general discussion platform similar to Reddit, where users can create posts, e
 ### 2.7 Admin Panel
 - Admin dashboard for platform management
 - Admin can view all posts, comments, and users
-- Admin can delete inappropriate posts and comments
+- Admin can delete any user's posts and comments
 - Admin can ban/unban users
 - Admin can manage groups (delete or modify groups)
 - Admin can view platform statistics (total users, posts, comments, groups)
+
+### 2.8 Updates Page
+- Dedicated page for platform updates and announcements
+- Admin can post updates to this page
+- All users can view updates
+- Updates are displayed in chronological order
 
 ## 3. Functional Requirements
 
@@ -62,31 +70,44 @@ A general discussion platform similar to Reddit, where users can create posts, e
 - Support OSS Google login and email/password authentication
 - After successful login, users can access all platform features
 
-### 3.2 Post Creation Flow
+### 3.2 Profile Update Flow
+- User accesses their profile settings
+- User can change their account name
+- User can upload and set a logo (profile picture)
+- User saves changes
+
+### 3.3 Post Creation Flow
 - User clicks create post button
 - User selects target group (optional) or posts to general feed
 - User enters post title and content
 - User adds at least one hashtag topic (required)
 - User submits post
 
-### 3.3 Group Creation Flow
+### 3.4 Group Creation Flow
 - User clicks create group button
 - User enters group name and description
 - User submits to create group
 - User automatically becomes group member
 
-### 3.4 Interaction Flow
+### 3.5 Interaction Flow
 - Users can upvote/downvote posts and comments
 - Users can reply to posts via comments
 - Users can reply to comments (nested replies)
 - Users can join/leave groups
 
-### 3.5 Admin Management Flow
+### 3.6 Admin Management Flow
 - Admin logs in with admin credentials
 - Admin accesses admin panel
-- Admin can moderate content (delete posts/comments)
+- Admin can moderate content (delete any user's posts/comments)
 - Admin can manage users (ban/unban)
 - Admin can manage groups
+- Admin can post updates to the updates page
+
+### 3.7 Updates Page Flow
+- Users navigate to the updates page
+- Users view all platform updates posted by admin
+- Admin can create new updates with title and content
+- Updates are displayed in reverse chronological order (newest first)
 
 ## 4. Technical Notes
 
@@ -101,6 +122,8 @@ A general discussion platform similar to Reddit, where users can create posts, e
 - Posts and comments have vote counts
 - Support nested comment structure
 - Admin role flag in user data
+- User profile includes account name and logo fields
+- Updates have title, content, timestamp, and admin author fields
 
 ### 4.3 Netlify Deployment Requirements
 - Configure netlify.toml file for build settings
