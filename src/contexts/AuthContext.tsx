@@ -109,14 +109,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signInWithDiscord = async () => {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'discord',
-      options: {
-        redirectTo: window.location.origin,
-      },
-    });
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'discord',
+        options: {
+          redirectTo: `${window.location.origin}/`,
+        },
+      });
 
-    if (error) throw error;
+      if (error) throw error;
+    } catch (error) {
+      console.error('Discord sign in error:', error);
+      throw error;
+    }
   };
 
   const signOut = async () => {

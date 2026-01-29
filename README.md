@@ -1,91 +1,166 @@
-# Welcome to Your Miaoda Project
+# Creative Communities - Discussion Platform
 
-## Project Info
+A modern Reddit-like discussion platform built with React, TypeScript, and Supabase.
 
-## Project Directory
+## Features
 
-```
-├── README.md # Documentation
-├── components.json # Component library configuration
-├── index.html # Entry file
-├── package.json # Package management
-├── postcss.config.js # PostCSS configuration
-├── public # Static resources directory
-│   ├── favicon.png # Icon
-│   └── images # Image resources
-├── src # Source code directory
-│   ├── App.tsx # Entry file
-│   ├── components # Components directory
-│   ├── context # Context directory
-│   ├── db # Database configuration directory
-│   ├── hooks # Common hooks directory
-│   ├── index.css # Global styles
-│   ├── layout # Layout directory
-│   ├── lib # Utility library directory
-│   ├── main.tsx # Entry file
-│   ├── routes.tsx # Routing configuration
-│   ├── pages # Pages directory
-│   ├── services # Database interaction directory
-│   ├── types # Type definitions directory
-├── tsconfig.app.json # TypeScript frontend configuration file
-├── tsconfig.json # TypeScript configuration file
-├── tsconfig.node.json # TypeScript Node.js configuration file
-└── vite.config.ts # Vite configuration file
-```
+- 🔐 **Multi-Auth Support**: Username/password, Google SSO, and Discord OAuth
+- 📝 **Post Management**: Create posts with required hashtags, vote, and comment
+- 💬 **Nested Comments**: Threaded discussions with voting
+- 👥 **Groups/Communities**: Create and join interest-based groups
+- 🏷️ **Hashtag System**: Organize and discover content by topics
+- 📊 **Admin Panel**: User management and content moderation
+- 🎨 **Modern UI**: Clean design with dark mode support
+- 📱 **Responsive**: Works seamlessly on desktop and mobile
 
 ## Tech Stack
 
-Vite, TypeScript, React, Supabase
+- **Frontend**: React 18, TypeScript, Vite
+- **UI Components**: shadcn/ui, Tailwind CSS
+- **Backend**: Supabase (PostgreSQL, Auth, RLS)
+- **Deployment**: Netlify-ready
 
-## Development Guidelines
+## Quick Start
 
-### How to edit code locally?
+### Prerequisites
 
-You can choose [VSCode](https://code.visualstudio.com/Download) or any IDE you prefer. The only requirement is to have Node.js and npm installed.
+- Node.js ≥ 18
+- npm ≥ 10
 
-### Environment Requirements
+### Installation
 
-```
-# Node.js ≥ 20
-# npm ≥ 10
-Example:
-# node -v   # v20.18.3
-# npm -v    # 10.8.2
-```
-
-### Installing Node.js on Windows
-
-```
-# Step 1: Visit the Node.js official website: https://nodejs.org/, click download. The website will automatically suggest a suitable version (32-bit or 64-bit) for your system.
-# Step 2: Run the installer: Double-click the downloaded installer to run it.
-# Step 3: Complete the installation: Follow the installation wizard to complete the process.
-# Step 4: Verify installation: Open Command Prompt (cmd) or your IDE terminal, and type `node -v` and `npm -v` to check if Node.js and npm are installed correctly.
+1. Clone the repository
+2. Install dependencies:
+```bash
+npm install
 ```
 
-### Installing Node.js on macOS
-
-```
-# Step 1: Using Homebrew (Recommended method): Open Terminal. Type the command `brew install node` and press Enter. If Homebrew is not installed, you need to install it first by running the following command in Terminal:
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-Alternatively, use the official installer: Visit the Node.js official website. Download the macOS .pkg installer. Open the downloaded .pkg file and follow the prompts to complete the installation.
-# Step 2: Verify installation: Open Command Prompt (cmd) or your IDE terminal, and type `node -v` and `npm -v` to check if Node.js and npm are installed correctly.
+3. Set up environment variables:
+```bash
+cp .env.example .env
 ```
 
-### After installation, follow these steps:
-
-```
-# Step 1: Download the code package
-# Step 2: Extract the code package
-# Step 3: Open the code package with your IDE and navigate into the code directory
-# Step 4: In the IDE terminal, run the command to install dependencies: npm i
-# Step 5: In the IDE terminal, run the command to start the development server: npm run dev -- --host 127.0.0.1
-# Step 6: if step 5 failed, try this command to start the development server: npx vite --host 127.0.0.1
+4. Start development server:
+```bash
+npm run dev
 ```
 
-### How to develop backend services?
+The app will be available at `http://localhost:5173`
 
-Configure environment variables and install relevant dependencies.If you need to use a database, please use the official version of Supabase.
+## Deployment
 
-## Learn More
+### Deploy to Netlify
 
-You can also check the help documentation: Download and Building the app（ [https://intl.cloud.baidu.com/en/doc/MIAODA/s/download-and-building-the-app-en](https://intl.cloud.baidu.com/en/doc/MIAODA/s/download-and-building-the-app-en)）to learn more detailed content.
+See [NETLIFY_DEPLOYMENT.md](./NETLIFY_DEPLOYMENT.md) for detailed deployment instructions.
+
+Quick steps:
+1. Build the project: `npm run build`
+2. Deploy to Netlify (drag & drop `dist` folder or connect Git)
+3. Configure environment variables in Netlify
+4. Set up OAuth providers in Supabase
+
+## Project Structure
+
+```
+├── src/
+│   ├── components/       # Reusable UI components
+│   │   ├── layouts/      # Layout components
+│   │   ├── ui/           # shadcn/ui components
+│   │   └── ...           # Feature components
+│   ├── contexts/         # React contexts (Auth)
+│   ├── db/               # Database configuration and API
+│   ├── hooks/            # Custom React hooks
+│   ├── pages/            # Page components
+│   ├── types/            # TypeScript type definitions
+│   └── lib/              # Utility functions
+├── public/               # Static assets
+├── netlify.toml          # Netlify configuration
+└── NETLIFY_DEPLOYMENT.md # Deployment guide
+```
+
+## Key Features
+
+### Authentication
+- Username/password with automatic profile creation
+- Google SSO via Supabase Auth
+- Discord OAuth integration
+- First user automatically becomes admin
+
+### Posts & Comments
+- Create posts with title, content, and hashtags
+- Upvote/downvote system
+- Nested comment threads
+- Real-time vote updates
+
+### Groups
+- Create interest-based communities
+- Join/leave groups
+- Group-specific feeds
+- Member and post counts
+
+### Admin Panel
+- User role management
+- Content moderation
+- Platform statistics
+- Search and filter users
+
+## Environment Variables
+
+Required variables (see `.env.example`):
+- `VITE_SUPABASE_URL`: Your Supabase project URL
+- `VITE_SUPABASE_ANON_KEY`: Your Supabase anonymous key
+
+## Database Schema
+
+The application uses PostgreSQL via Supabase with the following main tables:
+- `profiles`: User profiles with roles
+- `posts`: User posts with vote counts
+- `comments`: Nested comments with voting
+- `votes`: User votes on posts/comments
+- `groups`: Community groups
+- `group_members`: Group membership
+- `hashtags`: Unique hashtags
+- `post_hashtags`: Post-hashtag relationships
+
+All tables have Row Level Security (RLS) policies enabled.
+
+## Development
+
+### Available Scripts
+
+- `npm run dev`: Start development server
+- `npm run build`: Build for production
+- `npm run preview`: Preview production build
+- `npm run lint`: Run linter
+
+### Code Style
+
+- TypeScript strict mode enabled
+- ESLint + Biome for linting
+- Prettier for formatting
+- 2-space indentation
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run linting: `npm run lint`
+5. Submit a pull request
+
+## License
+
+MIT License - see LICENSE file for details
+
+## Support
+
+For issues and questions:
+- Check [NETLIFY_DEPLOYMENT.md](./NETLIFY_DEPLOYMENT.md) for deployment help
+- Review Supabase documentation for backend issues
+- Create an issue in the repository
+
+## Acknowledgments
+
+- Built with [shadcn/ui](https://ui.shadcn.com/)
+- Powered by [Supabase](https://supabase.com/)
+- Deployed on [Netlify](https://netlify.com/)
