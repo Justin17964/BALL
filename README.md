@@ -155,9 +155,11 @@ MIT License - see LICENSE file for details
 ## Support
 
 For issues and questions:
-- Check [NETLIFY_DEPLOYMENT.md](./NETLIFY_DEPLOYMENT.md) for deployment help
-- Review Supabase documentation for backend issues
-- Create an issue in the repository
+- **OAuth Setup**: See [DISCORD_OAUTH_SETUP.md](./DISCORD_OAUTH_SETUP.md) for Discord configuration
+- **Deployment**: Check [NETLIFY_DEPLOYMENT.md](./NETLIFY_DEPLOYMENT.md) for deployment help
+- **Auth Debug**: Visit `/auth-debug` page to diagnose authentication issues
+- **Supabase**: Review Supabase documentation for backend issues
+- **Issues**: Create an issue in the repository
 
 ## Acknowledgments
 

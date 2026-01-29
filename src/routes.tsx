@@ -11,6 +11,7 @@ import Updates from './pages/Updates';
 import CreateUpdate from './pages/CreateUpdate';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
+import AuthDebug from './pages/AuthDebug';
 import NotFound from './pages/NotFound';
 import type { ReactNode } from 'react';
 
@@ -91,6 +92,11 @@ const routes: RouteConfig[] = [
     name: 'Login',
     path: '/login',
     element: <Login />
+  },
+  {
+    name: 'Auth Debug',
+    path: '/auth-debug',
+    element: <AuthDebug />
   },
   {
     name: 'Not Found',

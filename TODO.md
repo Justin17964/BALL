@@ -21,6 +21,7 @@
 - [x] Step 14: Add profile editing with username change and avatar upload
 - [x] Step 15: Create Updates page for admin announcements
 - [x] Step 16: Allow admins to delete any post
+- [x] Step 17: Create comprehensive Discord OAuth setup guide and debug tools
 
 ## Notes
 - Using username + password, Google SSO, and Discord OAuth for authentication
@@ -39,3 +40,7 @@
 - Admins can delete any post, users can only delete their own
 - Updates navigation added to sidebar
 - Edit Profile link added to user dropdown menu
+- Created DISCORD_OAUTH_SETUP.md with comprehensive Discord OAuth configuration guide
+- Added /auth-debug page for diagnosing OAuth configuration issues
+- Improved error handling and logging for Discord OAuth
+- Updated deployment documentation with OAuth troubleshooting steps

@@ -75,17 +75,22 @@ Go to: **Site settings** → **Environment variables** → **Add a variable**
 
 1. Go to Discord Developer Portal: https://discord.com/developers/applications
 2. Create a new application or select existing one
-3. Go to OAuth2 settings
-4. Add redirect URLs:
+3. Go to OAuth2 → General settings
+4. Copy Client ID and Client Secret
+5. Add redirect URL:
    - `https://iurisvdzqmcpidstpwpe.supabase.co/auth/v1/callback`
-   - `https://your-site-name.netlify.app/`
-5. Copy Client ID and Client Secret
-6. Go to Supabase Dashboard → Authentication → Providers
-7. Enable Discord provider
-8. Paste Client ID and Client Secret
-9. Add site URL in Supabase:
-   - Site URL: `https://your-site-name.netlify.app`
-   - Redirect URLs: `https://your-site-name.netlify.app/**`
+6. Save changes
+7. Go to Supabase Dashboard → Authentication → Providers
+8. Enable Discord provider
+9. Paste Client ID and Client Secret
+10. Save configuration
+11. Update Site URL in Supabase:
+    - Site URL: `https://your-site-name.netlify.app`
+    - Redirect URLs: `https://your-site-name.netlify.app/**`
+
+**Important**: The Discord redirect URL must be the Supabase callback URL, NOT your application URL. Supabase handles the final redirect to your application.
+
+For detailed Discord OAuth setup instructions, see [DISCORD_OAUTH_SETUP.md](./DISCORD_OAUTH_SETUP.md)
 
 ## Post-Deployment Configuration
 
@@ -127,6 +132,8 @@ The first user to register will automatically become an admin. After registratio
 - Verify redirect URLs match exactly (including trailing slashes)
 - Check that OAuth providers are enabled in Supabase
 - Ensure Site URL is set correctly in Supabase
+- Visit `/auth-debug` page to diagnose OAuth configuration issues
+- See [DISCORD_OAUTH_SETUP.md](./DISCORD_OAUTH_SETUP.md) for detailed Discord setup
 
 ### Environment Variables Not Loading
 - Redeploy after adding environment variables

@@ -110,6 +110,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signInWithDiscord = async () => {
     try {
+      console.log('Initiating Discord OAuth...');
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'discord',
         options: {
@@ -117,9 +118,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         },
       });
 
-      if (error) throw error;
-    } catch (error) {
+      if (error) {
+        console.error('Discord OAuth error:', error);
+        throw error;
+      }
+
+      console.log('Discord OAuth initiated successfully');
+      // The redirect happens automatically, no need to manually redirect
+    } catch (error: any) {
       console.error('Discord sign in error:', error);
+      // Provide more helpful error messages
+      if (error.message?.includes('provider')) {
+        throw new Error('Discord login is not configured. Please contact the administrator.');
+      }
       throw error;
     }
   };
