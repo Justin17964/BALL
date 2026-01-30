@@ -603,6 +603,177 @@ export async function deleteUpdate(updateId: string) {
   if (error) throw error;
 }
 
+// Messages API
+export async function getConversations() {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error('Not authenticated');
+
+  // Get unique conversations
+  const { data, error } = await supabase
+    .from('messages')
+    .select(`
+      *,
+      sender:profiles!messages_sender_id_fkey(id, username, avatar_url),
+      recipient:profiles!messages_recipient_id_fkey(id, username, avatar_url)
+    `)
+    .or(`sender_id.eq.${user.id},recipient_id.eq.${user.id}`)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+
+  // Group by conversation partner
+  const conversationsMap = new Map();
+  data?.forEach((msg: any) => {
+    const partnerId = msg.sender_id === user.id ? msg.recipient_id : msg.sender_id;
+    if (!conversationsMap.has(partnerId)) {
+      conversationsMap.set(partnerId, {
+        partner: msg.sender_id === user.id ? msg.recipient : msg.sender,
+        lastMessage: msg,
+        unreadCount: 0,
+      });
+    }
+    if (!msg.read && msg.recipient_id === user.id) {
+      conversationsMap.get(partnerId).unreadCount++;
+    }
+  });
+
+  return Array.from(conversationsMap.values());
+}
+
+export async function getMessages(otherUserId: string) {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error('Not authenticated');
+
+  const { data, error } = await supabase
+    .from('messages')
+    .select(`
+      *,
+      sender:profiles!messages_sender_id_fkey(id, username, avatar_url),
+      recipient:profiles!messages_recipient_id_fkey(id, username, avatar_url)
+    `)
+    .or(`and(sender_id.eq.${user.id},recipient_id.eq.${otherUserId}),and(sender_id.eq.${otherUserId},recipient_id.eq.${user.id})`)
+    .order('created_at', { ascending: true });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function sendMessage(recipientId: string, content: string) {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error('Not authenticated');
+
+  const { data, error } = await supabase
+    .from('messages')
+    .insert({
+      sender_id: user.id,
+      recipient_id: recipientId,
+      content,
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function markMessagesAsRead(otherUserId: string) {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error('Not authenticated');
+
+  const { error } = await supabase
+    .from('messages')
+    .update({ read: true })
+    .eq('sender_id', otherUserId)
+    .eq('recipient_id', user.id)
+    .eq('read', false);
+
+  if (error) throw error;
+}
+
+// Reports API
+export async function createReport(
+  contentType: 'post' | 'comment' | 'message' | 'user',
+  contentId: string | null,
+  reportedUserId: string | null,
+  reason: string
+) {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error('Not authenticated');
+
+  const { data, error } = await supabase
+    .from('reports')
+    .insert({
+      reporter_id: user.id,
+      reported_user_id: reportedUserId,
+      content_type: contentType,
+      content_id: contentId,
+      reason,
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function getReports(status?: string) {
+  const { data, error } = await supabase
+    .from('reports')
+    .select(`
+      *,
+      reporter:profiles!reports_reporter_id_fkey(id, username, avatar_url),
+      reported_user:profiles!reports_reported_user_id_fkey(id, username, avatar_url),
+      resolver:profiles!reports_resolved_by_fkey(id, username)
+    `)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+
+  let result = Array.isArray(data) ? data : [];
+  if (status) {
+    result = result.filter(r => r.status === status);
+  }
+  return result;
+}
+
+export async function updateReportStatus(
+  reportId: string,
+  status: 'reviewed' | 'resolved' | 'dismissed',
+  adminNotes?: string
+) {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error('Not authenticated');
+
+  const { error } = await supabase
+    .from('reports')
+    .update({
+      status,
+      admin_notes: adminNotes,
+      resolved_by: user.id,
+      resolved_at: new Date().toISOString(),
+    })
+    .eq('id', reportId);
+
+  if (error) throw error;
+}
+
+export async function banUser(userId: string, reason: string) {
+  const { error } = await supabase.rpc('ban_user', {
+    user_id_to_ban: userId,
+    reason,
+  });
+
+  if (error) throw error;
+}
+
+export async function unbanUser(userId: string) {
+  const { error } = await supabase.rpc('unban_user', {
+    user_id_to_unban: userId,
+  });
+
+  if (error) throw error;
+}
+
 // Search API
 export async function searchPosts(query: string) {
   const { data, error } = await supabase

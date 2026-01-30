@@ -22,6 +22,14 @@
 - [x] Step 15: Create Updates page for admin announcements
 - [x] Step 16: Allow admins to delete any post
 - [x] Step 17: Create comprehensive Discord OAuth setup guide and debug tools
+- [x] Step 18: Add direct messaging system and report feature
+  - [x] Create messages and reports tables
+  - [x] Add banned status to profiles
+  - [x] Create Messages and Conversation pages
+  - [x] Add report functionality for messages
+  - [x] Update Admin panel with Reports tab
+  - [x] Add ban/unban user functionality
+  - [x] Add Message button to user profiles
 
 ## Notes
 - Using username + password, Google SSO, and Discord OAuth for authentication
@@ -44,3 +52,10 @@
 - Added /auth-debug page for diagnosing OAuth configuration issues
 - Improved error handling and logging for Discord OAuth
 - Updated deployment documentation with OAuth troubleshooting steps
+- Direct messaging system with real-time conversations
+- Report feature for messages, posts, comments, and users
+- Admin dashboard shows all reports with pending count
+- Admins can ban/unban users with reason tracking
+- Banned users cannot post, comment, or send messages
+- Message button on user profiles for easy DM access
+- Reports tab in admin panel with review and resolution workflow

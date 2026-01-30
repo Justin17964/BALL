@@ -6,7 +6,7 @@
 Community Discussion Platform
 
 ### 1.2 Application Description
-A general discussion platform similar to Reddit, where users can create posts, engage in discussions, form communities (groups), and interact through comments and voting systems. All posts must be tagged with topic hashtags for better organization and discoverability. The platform includes an admin panel for content moderation and management, as well as an updates page where admins can post platform announcements.
+A general discussion platform similar to Reddit, where users can create posts, engage in discussions, form communities (groups), and interact through comments and voting systems. All posts must be tagged with topic hashtags for better organization and discoverability. The platform includes an admin panel for content moderation and management, as well as an updates page where admins can post platform announcements. Users can send direct messages to each other and report inappropriate messages for admin review.
 
 ## 2. Core Features
 
@@ -49,15 +49,27 @@ A general discussion platform similar to Reddit, where users can create posts, e
 - Sort posts by: hot, new, top (most upvoted)
 - Search functionality for posts and groups
 
-### 2.7 Admin Panel
+### 2.7 Direct Messaging System
+- Users can send direct messages to other users
+- Users can view their message inbox and sent messages
+- Users can report inappropriate messages
+
+### 2.8 Message Reporting System
+- Users can report messages they receive
+- Reported messages include reporter information and reason
+- Reported messages appear in admin dashboard for review
+
+### 2.9 Admin Panel
 - Admin dashboard for platform management
 - Admin can view all posts, comments, and users
 - Admin can delete any user's posts and comments
 - Admin can ban/unban users
 - Admin can manage groups (delete or modify groups)
 - Admin can view platform statistics (total users, posts, comments, groups)
+- Admin can view reported messages
+- Admin can ban users based on reported messages
 
-### 2.8 Updates Page
+### 2.10 Updates Page
 - Dedicated page for platform updates and announcements
 - Admin can post updates to this page
 - All users can view updates
@@ -95,15 +107,31 @@ A general discussion platform similar to Reddit, where users can create posts, e
 - Users can reply to comments (nested replies)
 - Users can join/leave groups
 
-### 3.6 Admin Management Flow
+### 3.6 Direct Messaging Flow
+- User navigates to another user's profile
+- User clicks send message button
+- User composes and sends direct message
+- Recipient receives message in their inbox
+- Users can view conversation history
+
+### 3.7 Message Reporting Flow
+- User receives an inappropriate message
+- User clicks report button on the message
+- User submits report (optionally with reason)
+- Reported message appears in admin dashboard
+- Admin reviews reported message and can take action (ban user if necessary)
+
+### 3.8 Admin Management Flow
 - Admin logs in with admin credentials
 - Admin accesses admin panel
 - Admin can moderate content (delete any user's posts/comments)
 - Admin can manage users (ban/unban)
 - Admin can manage groups
+- Admin can view and review reported messages
+- Admin can ban users based on reported messages
 - Admin can post updates to the updates page
 
-### 3.7 Updates Page Flow
+### 3.9 Updates Page Flow
 - Users navigate to the updates page
 - Users view all platform updates posted by admin
 - Admin can create new updates with title and content
@@ -124,6 +152,8 @@ A general discussion platform similar to Reddit, where users can create posts, e
 - Admin role flag in user data
 - User profile includes account name and logo fields
 - Updates have title, content, timestamp, and admin author fields
+- Direct messages include sender, recipient, content, and timestamp
+- Reported messages include message content, reporter, reported user, reason, and timestamp
 
 ### 4.3 Netlify Deployment Requirements
 - Configure netlify.toml file for build settings

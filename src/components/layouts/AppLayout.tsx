@@ -4,7 +4,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Home, Users, Hash, User, LogOut, Menu, Shield, Plus, Bell } from 'lucide-react';
+import { Home, Users, Hash, User, LogOut, Menu, Shield, Plus, Bell, MessageCircle } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,6 +26,7 @@ export function AppLayout({ children }: AppLayoutProps) {
     { icon: Home, label: 'Home', path: '/' },
     { icon: Users, label: 'Groups', path: '/groups' },
     { icon: Hash, label: 'Trending', path: '/trending' },
+    { icon: MessageCircle, label: 'Messages', path: '/messages' },
   ];
 
   const updatesItem = { icon: Bell, label: 'Updates', path: '/updates' };

@@ -7,8 +7,46 @@ export interface Profile {
   role: UserRole;
   avatar_url: string | null;
   bio: string | null;
+  banned: boolean;
+  banned_at: string | null;
+  banned_by: string | null;
+  ban_reason: string | null;
   created_at: string;
   updated_at: string;
+}
+
+export interface Message {
+  id: string;
+  sender_id: string;
+  recipient_id: string;
+  content: string;
+  read: boolean;
+  created_at: string;
+}
+
+export interface MessageWithDetails extends Message {
+  sender?: Profile;
+  recipient?: Profile;
+}
+
+export interface Report {
+  id: string;
+  reporter_id: string;
+  reported_user_id: string | null;
+  content_type: 'post' | 'comment' | 'message' | 'user';
+  content_id: string | null;
+  reason: string;
+  status: 'pending' | 'reviewed' | 'resolved' | 'dismissed';
+  admin_notes: string | null;
+  resolved_by: string | null;
+  resolved_at: string | null;
+  created_at: string;
+}
+
+export interface ReportWithDetails extends Report {
+  reporter?: Profile;
+  reported_user?: Profile;
+  resolver?: Profile;
 }
 
 export interface Group {

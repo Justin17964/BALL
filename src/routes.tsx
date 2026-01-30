@@ -9,6 +9,8 @@ import UserProfile from './pages/UserProfile';
 import EditProfile from './pages/EditProfile';
 import Updates from './pages/Updates';
 import CreateUpdate from './pages/CreateUpdate';
+import Messages from './pages/Messages';
+import Conversation from './pages/Conversation';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
 import AuthDebug from './pages/AuthDebug';
@@ -82,6 +84,16 @@ const routes: RouteConfig[] = [
     name: 'Create Update',
     path: '/updates/create',
     element: <CreateUpdate />
+  },
+  {
+    name: 'Messages',
+    path: '/messages',
+    element: <Messages />
+  },
+  {
+    name: 'Conversation',
+    path: '/messages/:userId',
+    element: <Conversation />
   },
   {
     name: 'Admin',

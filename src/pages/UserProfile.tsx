@@ -96,9 +96,13 @@ export default function UserProfile() {
           <CardHeader>
             <div className="flex items-start gap-4">
               <Avatar className="w-20 h-20">
-                <AvatarFallback className="text-2xl bg-primary text-primary-foreground">
-                  {profile.username?.[0]?.toUpperCase() || 'U'}
-                </AvatarFallback>
+                {profile.avatar_url ? (
+                  <img src={profile.avatar_url} alt={profile.username || 'User'} className="w-full h-full object-cover" />
+                ) : (
+                  <AvatarFallback className="text-2xl bg-primary text-primary-foreground">
+                    {profile.username?.[0]?.toUpperCase() || 'U'}
+                  </AvatarFallback>
+                )}
               </Avatar>
               <div className="flex-1">
                 <CardTitle className="text-2xl mb-1">{profile.username || 'Unknown User'}</CardTitle>
@@ -109,6 +113,11 @@ export default function UserProfile() {
                   Joined {formatDistanceToNow(new Date(profile.created_at), { addSuffix: true })}
                 </p>
               </div>
+              {!isOwnProfile && (
+                <Button onClick={() => navigate(`/messages/${userId}`)}>
+                  Message
+                </Button>
+              )}
             </div>
           </CardHeader>
           <CardContent>
