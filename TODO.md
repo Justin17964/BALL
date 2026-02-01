@@ -16,7 +16,7 @@
 - [x] Step 13: Add profile editing with username change and avatar upload
 - [x] Step 14: Add direct messaging system and report feature
 - [x] Step 15: Remove admin panel and admin-only features
-- [x] Step 16: Add error handling to post creation
+- [x] Step 16: Fix post creation redirect issue
 
 ## Notes
 - Using username + password, Google SSO, and Discord OAuth for authentication
@@ -34,6 +34,7 @@
 - Report feature for messages (reports stored but no admin interface to review)
 - Message button on user profiles for easy DM access
 - Admin panel and Updates pages removed per user request
-- Post creation includes error handling and user feedback
+- Post creation redirects to home page to avoid timing issues with database replication
+- Error handling with user-friendly messages in post creation
 - Removed admin-specific API functions (banUser, unbanUser, updateUserRole, getAllProfiles)
 - Kept report functionality for future admin implementation
