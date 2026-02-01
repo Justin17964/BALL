@@ -4,7 +4,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Home, Users, Hash, User, LogOut, Menu, Shield, Plus, Bell, MessageCircle } from 'lucide-react';
+import { Home, Users, Hash, User, LogOut, Menu, Plus, MessageCircle } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,8 +28,6 @@ export function AppLayout({ children }: AppLayoutProps) {
     { icon: Hash, label: 'Trending', path: '/trending' },
     { icon: MessageCircle, label: 'Messages', path: '/messages' },
   ];
-
-  const updatesItem = { icon: Bell, label: 'Updates', path: '/updates' };
 
   const handleSignOut = async () => {
     await signOut();
@@ -66,19 +64,6 @@ export function AppLayout({ children }: AppLayoutProps) {
             </Link>
           );
         })}
-        
-        {/* Updates link */}
-        <Link
-          to={updatesItem.path}
-          className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-            location.pathname === updatesItem.path
-              ? 'bg-primary text-primary-foreground'
-              : 'hover:bg-accent text-foreground'
-          }`}
-        >
-          <updatesItem.icon className="w-5 h-5" />
-          <span className="font-medium">{updatesItem.label}</span>
-        </Link>
       </nav>
 
       <div className="p-4 border-t border-border">
@@ -153,12 +138,6 @@ export function AppLayout({ children }: AppLayoutProps) {
                   <User className="w-4 h-4 mr-2" />
                   Edit Profile
                 </DropdownMenuItem>
-                {profile?.role === 'admin' && (
-                  <DropdownMenuItem onClick={() => navigate('/admin')}>
-                    <Shield className="w-4 h-4 mr-2" />
-                    Admin Panel
-                  </DropdownMenuItem>
-                )}
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleSignOut}>
                   <LogOut className="w-4 h-4 mr-2" />

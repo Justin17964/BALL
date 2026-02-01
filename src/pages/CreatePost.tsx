@@ -20,6 +20,7 @@ export default function CreatePost() {
   const [selectedGroup, setSelectedGroup] = useState<string>('');
   const [groups, setGroups] = useState<Group[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     loadGroups();
@@ -39,6 +40,7 @@ export default function CreatePost() {
     if (!title.trim() || !content.trim() || hashtags.length === 0 || isSubmitting) return;
 
     setIsSubmitting(true);
+    setError(null);
     try {
       const groupIdToUse = selectedGroup === 'general' ? undefined : selectedGroup;
       const post = await createPost(
@@ -48,8 +50,9 @@ export default function CreatePost() {
         groupIdToUse
       );
       navigate(`/post/${post.id}`);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to create post:', error);
+      setError(error.message || 'Failed to create post. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -68,6 +71,11 @@ export default function CreatePost() {
             <CardTitle>Create a Post</CardTitle>
           </CardHeader>
           <CardContent>
+            {error && (
+              <div className="mb-4 p-3 bg-destructive/10 border border-destructive rounded-md">
+                <p className="text-sm text-destructive">{error}</p>
+              </div>
+            )}
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="group">Post to Group (Optional)</Label>

@@ -561,48 +561,6 @@ export async function uploadAvatar(userId: string, file: File) {
   return publicUrl;
 }
 
-// Updates API
-export async function getUpdates() {
-  const { data, error } = await supabase
-    .from('updates')
-    .select(`
-      *,
-      author:profiles!updates_author_id_fkey(id, username, avatar_url)
-    `)
-    .order('created_at', { ascending: false })
-    .limit(50);
-
-  if (error) throw error;
-  return Array.isArray(data) ? data : [];
-}
-
-export async function createUpdate(title: string, content: string) {
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) throw new Error('Not authenticated');
-
-  const { data, error } = await supabase
-    .from('updates')
-    .insert({
-      title,
-      content,
-      author_id: user.id,
-    })
-    .select()
-    .single();
-
-  if (error) throw error;
-  return data;
-}
-
-export async function deleteUpdate(updateId: string) {
-  const { error } = await supabase
-    .from('updates')
-    .delete()
-    .eq('id', updateId);
-
-  if (error) throw error;
-}
-
 // Messages API
 export async function getConversations() {
   const { data: { user } } = await supabase.auth.getUser();
@@ -757,23 +715,6 @@ export async function updateReportStatus(
   if (error) throw error;
 }
 
-export async function banUser(userId: string, reason: string) {
-  const { error } = await supabase.rpc('ban_user', {
-    user_id_to_ban: userId,
-    reason,
-  });
-
-  if (error) throw error;
-}
-
-export async function unbanUser(userId: string) {
-  const { error } = await supabase.rpc('unban_user', {
-    user_id_to_unban: userId,
-  });
-
-  if (error) throw error;
-}
-
 // Search API
 export async function searchPosts(query: string) {
   const { data, error } = await supabase
@@ -801,24 +742,4 @@ export async function searchGroups(query: string) {
 
   if (error) throw error;
   return Array.isArray(data) ? data : [];
-}
-
-// Admin API
-export async function getAllProfiles() {
-  const { data, error } = await supabase
-    .from('profiles')
-    .select('*')
-    .order('created_at', { ascending: false });
-
-  if (error) throw error;
-  return Array.isArray(data) ? data : [];
-}
-
-export async function updateUserRole(userId: string, role: 'user' | 'admin') {
-  const { error } = await supabase
-    .from('profiles')
-    .update({ role })
-    .eq('id', userId);
-
-  if (error) throw error;
 }

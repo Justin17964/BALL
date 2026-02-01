@@ -7,12 +7,9 @@ import CreateGroup from './pages/CreateGroup';
 import Trending from './pages/Trending';
 import UserProfile from './pages/UserProfile';
 import EditProfile from './pages/EditProfile';
-import Updates from './pages/Updates';
-import CreateUpdate from './pages/CreateUpdate';
 import Messages from './pages/Messages';
 import Conversation from './pages/Conversation';
 import Login from './pages/Login';
-import Admin from './pages/Admin';
 import AuthDebug from './pages/AuthDebug';
 import NotFound from './pages/NotFound';
 import type { ReactNode } from 'react';
@@ -76,16 +73,6 @@ const routes: RouteConfig[] = [
     element: <EditProfile />
   },
   {
-    name: 'Updates',
-    path: '/updates',
-    element: <Updates />
-  },
-  {
-    name: 'Create Update',
-    path: '/updates/create',
-    element: <CreateUpdate />
-  },
-  {
     name: 'Messages',
     path: '/messages',
     element: <Messages />
@@ -94,11 +81,6 @@ const routes: RouteConfig[] = [
     name: 'Conversation',
     path: '/messages/:userId',
     element: <Conversation />
-  },
-  {
-    name: 'Admin',
-    path: '/admin',
-    element: <Admin />
   },
   {
     name: 'Login',
