@@ -23,10 +23,10 @@ export function AppLayout({ children }: AppLayoutProps) {
   const navigate = useNavigate();
 
   const navItems = [
-    { icon: Home, label: 'Home', path: '/' },
-    { icon: Users, label: 'Groups', path: '/groups' },
+    { icon: MessageCircle, label: 'Messages', path: '/' },
+    { icon: Users, label: 'Find Users', path: '/find-users' },
+    { icon: Home, label: 'Community', path: '/community' },
     { icon: Hash, label: 'Trending', path: '/trending' },
-    { icon: MessageCircle, label: 'Messages', path: '/messages' },
   ];
 
   const handleSignOut = async () => {
@@ -39,9 +39,9 @@ export function AppLayout({ children }: AppLayoutProps) {
       <div className="p-6 border-b border-border">
         <Link to="/" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">CC</span>
+            <span className="text-primary-foreground font-bold text-lg">💬</span>
           </div>
-          <span className="font-bold text-lg">Creative Communities</span>
+          <span className="font-bold text-lg">ChatConnect</span>
         </Link>
       </div>
 
@@ -68,12 +68,12 @@ export function AppLayout({ children }: AppLayoutProps) {
 
       <div className="p-4 border-t border-border">
         <Button
-          onClick={() => navigate('/create-post')}
+          onClick={() => navigate('/find-users')}
           className="w-full"
           size="lg"
         >
           <Plus className="w-5 h-5 mr-2" />
-          Create Post
+          New Chat
         </Button>
       </div>
     </div>
@@ -106,7 +106,7 @@ export function AppLayout({ children }: AppLayoutProps) {
             {/* Logo for mobile */}
             <Link to="/" className="lg:hidden flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">CC</span>
+                <span className="text-primary-foreground font-bold text-lg">💬</span>
               </div>
             </Link>
 

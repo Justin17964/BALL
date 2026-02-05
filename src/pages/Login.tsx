@@ -103,10 +103,10 @@ export default function Login() {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="mx-auto w-12 h-12 rounded-lg bg-primary flex items-center justify-center mb-4">
-            <span className="text-primary-foreground font-bold text-2xl">CC</span>
+            <span className="text-primary-foreground font-bold text-2xl">💬</span>
           </div>
-          <CardTitle className="text-2xl">Welcome to Creative Communities</CardTitle>
-          <CardDescription>Sign in or create an account to get started</CardDescription>
+          <CardTitle className="text-2xl">Welcome to ChatConnect</CardTitle>
+          <CardDescription>Connect and chat with people by username or email</CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="signin" className="w-full">

@@ -1,12 +1,12 @@
-# Community Discussion Platform Requirements Document
+# Total Chatting Application Requirements Document
 
 ## 1. Application Overview
 
 ### 1.1 Application Name
-Community Discussion Platform
+Total Chatting Application
 
 ### 1.2 Application Description
-A general discussion platform similar to Reddit, where users can create posts, engage in discussions, form communities (groups), and interact through comments and voting systems. All posts must be tagged with topic hashtags for better organization and discoverability. Users can send direct messages to each other with online status visibility, and manage their availability status.
+A comprehensive messaging and communication platform where users can connect with others using either their email address or account name. The application focuses on real-time chat functionality, user discovery, and seamless communication between users.
 
 ## 2. Core Features
 
@@ -21,44 +21,30 @@ A general discussion platform similar to Reddit, where users can create posts, e
 - Users can change their account names
 - Users can add a logo (profile picture/avatar)
 - Display user information
-- Show user's post history
-- Show user's comment history
-- Display groups the user has joined
 - Users can set their availability status: Available, Do Not Disturb, or Idle
+- Users can view their own profile
 
-### 2.3 Post Management
-- Users can create posts with title and content
-- Each post must include at least one hashtag topic (e.g., #technology, #gaming, #news)
-- Posts support text content
-- Users can upvote/downvote posts
-- Posts display vote count and comment count
-- Ensure post submission functionality works correctly
+### 2.3 User Discovery
+- Users can search for other users by email address
+- Users can search for other users by account name
+- Display search results with user profiles
+- Users can view other users' profiles
 
-### 2.4 Comment System
-- Users can comment on posts
-- Support for nested replies to comments
-- Users can upvote/downvote comments
-
-### 2.5 Community/Group Management
-- Users can create their own groups (similar to subreddits)
-- Each group has a name and description
-- Users can join/leave groups
-- Posts can be published within specific groups
-- Group creators can view all group members
-- Group creators can set other users as group admins
-- Group creators can set groups as private (invite-only) or public
-
-### 2.6 Content Discovery
-- Browse posts by hashtag topics
-- Browse posts by groups
-- Sort posts by: hot, new, top (most upvoted)
-- Search functionality for posts and groups
-
-### 2.7 Direct Messaging System
-- Users can send direct messages to other users
+### 2.4 Direct Messaging System
+- Users can send direct messages to other users by finding them via email or account name
+- Real-time chat functionality
 - Users can view their message inbox and sent messages
-- Users can see if the other person is online when private messaging
+- Users can see if the other person is online when messaging
 - User online status is visible during messaging conversations
+- Support for conversation history
+- Message notifications for new incoming messages
+
+### 2.5 Chat Management
+- Users can view all their active conversations
+- Users can start new conversations by searching for users
+- Users can delete conversation history
+- Display timestamp for each message
+- Show read/unread status for messages
 
 ## 3. Functional Requirements
 
@@ -74,42 +60,30 @@ A general discussion platform similar to Reddit, where users can create posts, e
 - User can set their availability status (Available, Do Not Disturb, or Idle)
 - User saves changes
 
-### 3.3 Post Creation Flow
-- User clicks create post button
-- User selects target group (optional) or posts to general feed
-- User enters post title and content
-- User adds at least one hashtag topic (required)
-- User submits post
-- System must properly handle post submission and save to database
+### 3.3 User Search Flow
+- User navigates to search/discover section
+- User enters email address or account name in search field
+- System displays matching users
+- User can click on a profile to view details
+- User can initiate chat from profile view
 
-### 3.4 Group Creation Flow
-- User clicks create group button
-- User enters group name and description
-- User sets group visibility (public or private)
-- User submits to create group
-- User automatically becomes group creator and member
-
-### 3.5 Group Management Flow
-- Group creator can view list of all group members
-- Group creator can assign other users as group admins
-- Group creator can change group settings (public/private)
-- Group admins have moderation permissions within the group
-
-### 3.6 Interaction Flow
-- Users can upvote/downvote posts and comments
-- Users can reply to posts via comments
-- Users can reply to comments (nested replies)
-- Users can join/leave groups
-- Users can join private groups only if invited or approved by group creator/admin
-
-### 3.7 Direct Messaging Flow
-- User navigates to another user's profile
-- User clicks send message button
+### 3.4 Messaging Flow
+- User searches for another user by email or account name
+- User clicks on the user profile
+- User clicks send message or start chat button
 - User can see if the other person is online
-- User composes and sends direct message
-- Recipient receives message in their inbox
+- User composes and sends message
+- Recipient receives message in real-time
 - Users can view conversation history
 - Online status is displayed during messaging
+- Messages show timestamp and read status
+
+### 3.5 Conversation Management Flow
+- User can view list of all active conversations
+- User can select a conversation to continue chatting
+- User can delete conversations
+- User receives notifications for new messages
+- Unread messages are highlighted
 
 ## 4. Technical Notes
 
@@ -118,18 +92,21 @@ A general discussion platform similar to Reddit, where users can create posts, e
 - Implement email/password authentication with secure password storage
 
 ### 4.2 Data Structure
-- Posts must include hashtag field (required, can be multiple hashtags)
-- Groups have members list, creator field, admin list, and visibility setting (public/private)
-- Posts and comments have vote counts
-- Support nested comment structure
-- User profile includes account name, logo fields, and availability status (Available, Do Not Disturb, Idle)
-- Direct messages include sender, recipient, content, timestamp, and online status indicator
+- User profile includes account name, email, logo fields, and availability status (Available, Do Not Disturb, Idle)
+- Direct messages include sender, recipient, content, timestamp, read status, and online status indicator
 - User online status tracking for real-time messaging features
-- Ensure proper database schema and API endpoints for post creation
+- Conversation threads linking messages between two users
+- Search index for email addresses and account names
 
-### 4.3 Netlify Deployment Requirements
+### 4.3 Real-time Communication
+- Implement real-time messaging functionality
+- Support online/offline status updates
+- Enable message delivery notifications
+- Support read receipts
+
+### 4.4 Netlify Deployment Requirements
 - Configure netlify.toml file for build settings
 - Set up environment variables in Netlify dashboard for authentication keys and database connections
 - Configure redirects for client-side routing
-- Set up serverless functions if backend API is needed
+- Set up serverless functions for backend API and real-time messaging
 - Ensure build command and publish directory are correctly specified

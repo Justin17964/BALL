@@ -1,8 +1,8 @@
-# Task: Build Reddit-like Discussion Platform - Creative Communities
+# Task: Transform into ChatConnect - Real-Time Messaging Platform
 
 ## Plan
 - [x] Step 1: Initialize Supabase and setup database schema
-- [x] Step 2: Update design system with Reddit-like color scheme
+- [x] Step 2: Update design system with modern color scheme
 - [x] Step 3: Create type definitions
 - [x] Step 4: Create database API layer
 - [x] Step 5: Update authentication context for Google SSO and Discord OAuth
@@ -17,12 +17,23 @@
 - [x] Step 14: Add direct messaging system and report feature
 - [x] Step 15: Remove admin panel and admin-only features
 - [x] Step 16: Fix post creation redirect issue
+- [x] Step 17: Transform into messaging-focused app
+  - [x] Create FindUsers page for user discovery
+  - [x] Make Messages the home page
+  - [x] Update navigation to prioritize messaging
+  - [x] Rebrand to ChatConnect
+  - [x] Update all branding and titles
 
 ## Notes
-- Using username + password, Google SSO, and Discord OAuth for authentication
-- All posts require at least one hashtag
-- Nested comment system with voting
-- Group-based communities
+- **Primary Focus**: Real-time messaging and user-to-user communication
+- **User Discovery**: Search users by username or email address
+- **Authentication**: Username + password, Google SSO, and Discord OAuth
+- **Messaging**: Direct messaging with conversation management
+- **Community Features**: Optional posts, comments, groups, and hashtags (secondary features)
+- **Navigation**: Messages → Find Users → Community → Trending
+- **Branding**: ChatConnect with 💬 emoji logo
+- **Home Page**: Messages/conversations list
+- **New Chat**: Button redirects to Find Users page
 - First user becomes admin automatically (role tracked but no admin panel)
 - Discord OAuth with proper error handling and redirect URL
 - Netlify deployment ready with netlify.toml, _redirects, and comprehensive deployment guide
@@ -30,11 +41,7 @@
 - Complete README.md with deployment instructions
 - Users can edit their profile (username, bio, avatar)
 - Avatar upload with 1MB size limit to storage bucket
-- Direct messaging system with real-time conversations
 - Report feature for messages (reports stored but no admin interface to review)
-- Message button on user profiles for easy DM access
-- Admin panel and Updates pages removed per user request
-- Post creation redirects to home page to avoid timing issues with database replication
-- Error handling with user-friendly messages in post creation
+- Post creation redirects to community page to avoid timing issues
 - Removed admin-specific API functions (banUser, unbanUser, updateUserRole, getAllProfiles)
 - Kept report functionality for future admin implementation

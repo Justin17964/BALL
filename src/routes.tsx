@@ -9,6 +9,7 @@ import UserProfile from './pages/UserProfile';
 import EditProfile from './pages/EditProfile';
 import Messages from './pages/Messages';
 import Conversation from './pages/Conversation';
+import FindUsers from './pages/FindUsers';
 import Login from './pages/Login';
 import AuthDebug from './pages/AuthDebug';
 import NotFound from './pages/NotFound';
@@ -23,8 +24,23 @@ interface RouteConfig {
 
 const routes: RouteConfig[] = [
   {
-    name: 'Home',
+    name: 'Messages',
     path: '/',
+    element: <Messages />
+  },
+  {
+    name: 'Find Users',
+    path: '/find-users',
+    element: <FindUsers />
+  },
+  {
+    name: 'Conversation',
+    path: '/messages/:userId',
+    element: <Conversation />
+  },
+  {
+    name: 'Community',
+    path: '/community',
     element: <Home />
   },
   {
@@ -71,16 +87,6 @@ const routes: RouteConfig[] = [
     name: 'Edit Profile',
     path: '/profile/:userId/edit',
     element: <EditProfile />
-  },
-  {
-    name: 'Messages',
-    path: '/messages',
-    element: <Messages />
-  },
-  {
-    name: 'Conversation',
-    path: '/messages/:userId',
-    element: <Conversation />
   },
   {
     name: 'Login',

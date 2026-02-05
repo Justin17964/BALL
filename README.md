@@ -1,15 +1,16 @@
-# Creative Communities - Discussion Platform
+# ChatConnect - Real-Time Messaging Platform
 
-A modern Reddit-like discussion platform built with React, TypeScript, and Supabase.
+A modern, real-time messaging application where users can connect and chat with others by searching for their username or email address. Built with React, TypeScript, and Supabase.
 
 ## Features
 
+- 💬 **Real-Time Messaging**: Send and receive messages instantly
+- 🔍 **User Discovery**: Find users by username or email address
+- 📱 **Conversation Management**: View all your conversations in one place
 - 🔐 **Multi-Auth Support**: Username/password, Google SSO, and Discord OAuth
-- 📝 **Post Management**: Create posts with required hashtags, vote, and comment
-- 💬 **Nested Comments**: Threaded discussions with voting
-- 👥 **Groups/Communities**: Create and join interest-based groups
-- 🏷️ **Hashtag System**: Organize and discover content by topics
-- 📊 **Admin Panel**: User management and content moderation
+- 👤 **User Profiles**: Customizable profiles with avatar upload
+- 📊 **Read Receipts**: See when messages have been read
+- 🌐 **Community Features**: Optional discussion board with posts and groups
 - 🎨 **Modern UI**: Clean design with dark mode support
 - 📱 **Responsive**: Works seamlessly on desktop and mobile
 
