@@ -23,12 +23,23 @@
   - [x] Update navigation to prioritize messaging
   - [x] Rebrand to ChatConnect
   - [x] Update all branding and titles
+- [x] Step 18: Add emoji and image support to messages
+  - [x] Create emoji picker component
+  - [x] Add image upload to messages
+  - [x] Update message display to show images
+  - [x] Add image_url column to messages table
 
 ## Notes
 - **Primary Focus**: Real-time messaging and user-to-user communication
 - **User Discovery**: Search users by username or email address
 - **Authentication**: Username + password, Google SSO, and Discord OAuth
-- **Messaging**: Direct messaging with conversation management
+- **Messaging Features**:
+  - Direct messaging with conversation management
+  - Emoji picker with multiple categories (Smileys, Gestures, Hearts, Objects, Nature, Food)
+  - Image upload support (max 5MB per image)
+  - Image preview before sending
+  - Images stored in Supabase Storage
+  - Messages can contain text, emojis, images, or combinations
 - **Community Features**: Optional posts, comments, groups, and hashtags (secondary features)
 - **Navigation**: Messages → Find Users → Community → Trending
 - **Branding**: ChatConnect with 💬 emoji logo

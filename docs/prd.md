@@ -33,6 +33,8 @@ A comprehensive messaging and communication platform where users can connect wit
 ### 2.4 Direct Messaging System
 - Users can send direct messages to other users by finding them via email or account name
 - Real-time chat functionality
+- Users can send emojis in chat messages
+- Users can send pictures in chat messages
 - Users can view their message inbox and sent messages
 - Users can see if the other person is online when messaging
 - User online status is visible during messaging conversations
@@ -73,8 +75,10 @@ A comprehensive messaging and communication platform where users can connect wit
 - User clicks send message or start chat button
 - User can see if the other person is online
 - User composes and sends message
+- User can select and send emojis
+- User can select and send pictures
 - Recipient receives message in real-time
-- Users can view conversation history
+- Users can view conversation history including text, emojis, and pictures
 - Online status is displayed during messaging
 - Messages show timestamp and read status
 
@@ -93,16 +97,19 @@ A comprehensive messaging and communication platform where users can connect wit
 
 ### 4.2 Data Structure
 - User profile includes account name, email, logo fields, and availability status (Available, Do Not Disturb, Idle)
-- Direct messages include sender, recipient, content, timestamp, read status, and online status indicator
+- Direct messages include sender, recipient, content (text/emoji/picture), timestamp, read status, and online status indicator
 - User online status tracking for real-time messaging features
 - Conversation threads linking messages between two users
 - Search index for email addresses and account names
+- Picture messages include image file references
 
 ### 4.3 Real-time Communication
 - Implement real-time messaging functionality
 - Support online/offline status updates
 - Enable message delivery notifications
 - Support read receipts
+- Support emoji rendering in messages
+- Support picture display in messages
 
 ### 4.4 Netlify Deployment Requirements
 - Configure netlify.toml file for build settings

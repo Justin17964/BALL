@@ -616,7 +616,7 @@ export async function getMessages(otherUserId: string) {
   return Array.isArray(data) ? data : [];
 }
 
-export async function sendMessage(recipientId: string, content: string) {
+export async function sendMessage(recipientId: string, content: string, imageUrl?: string) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error('Not authenticated');
 
@@ -626,6 +626,7 @@ export async function sendMessage(recipientId: string, content: string) {
       sender_id: user.id,
       recipient_id: recipientId,
       content,
+      image_url: imageUrl || null,
     })
     .select()
     .single();
