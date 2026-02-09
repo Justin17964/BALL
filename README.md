@@ -5,13 +5,23 @@ A modern discussion platform built with React, TypeScript, and Supabase. Users c
 ## Features
 
 - 🔐 **Multi-Auth Support**: Username/password, Google SSO, and Discord OAuth
+- 📢 **Platform Updates**: View admin announcements and platform news (home page)
 - 📝 **Post Management**: Create posts with required hashtags, vote, and comment
 - 💬 **Direct Messaging**: Send private messages with emoji and image support
 - 👥 **Groups/Communities**: Create and join interest-based groups
 - 🏷️ **Hashtag System**: Organize and discover content by topics
-- 📢 **Admin Updates**: Admins can post platform-wide announcements
+- 🛡️ **Admin Panel**: Admins can post platform-wide announcements
 - 🎨 **Modern UI**: Clean design with dark mode support
 - 📱 **Responsive**: Works seamlessly on desktop and mobile
+
+## Navigation
+
+- **Updates** (Home): View platform announcements and updates
+- **Messages**: Direct messaging with other users
+- **Find Users**: Discover and connect with other users
+- **Posts**: Browse community posts (accessible via /posts)
+- **Groups**: Browse and join communities
+- **Profile**: View and edit your profile
 
 ## Tech Stack
 

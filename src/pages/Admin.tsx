@@ -37,7 +37,7 @@ export default function Admin() {
   useEffect(() => {
     // Check if user is admin
     if (profile && profile.role !== 'admin') {
-      navigate('/');
+      navigate('/'); // Redirect to Updates page
       return;
     }
     loadUpdates();

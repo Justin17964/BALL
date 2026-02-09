@@ -26,13 +26,8 @@ interface RouteConfig {
 
 const routes: RouteConfig[] = [
   {
-    name: 'Home',
-    path: '/',
-    element: <Home />
-  },
-  {
     name: 'Updates',
-    path: '/updates',
+    path: '/',
     element: <Updates />
   },
   {
@@ -54,6 +49,11 @@ const routes: RouteConfig[] = [
     name: 'Conversation',
     path: '/messages/:userId',
     element: <Conversation />
+  },
+  {
+    name: 'Posts',
+    path: '/posts',
+    element: <Home />
   },
   {
     name: 'Post Detail',

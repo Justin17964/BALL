@@ -23,8 +23,7 @@ export function AppLayout({ children }: AppLayoutProps) {
   const navigate = useNavigate();
 
   const navItems = [
-    { icon: Home, label: 'Home', path: '/' },
-    { icon: Megaphone, label: 'Updates', path: '/updates' },
+    { icon: Megaphone, label: 'Updates', path: '/' },
     { icon: MessageCircle, label: 'Messages', path: '/messages' },
     { icon: Users, label: 'Find Users', path: '/find-users' },
   ];

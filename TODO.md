@@ -36,14 +36,22 @@
   - [x] Remove Trending hashtags from navigation
   - [x] Add admin panel link in user menu
   - [x] Rebrand back to Creative Communities
+- [x] Step 20: Grant admin privileges to hawkyt83390
+- [x] Step 21: Remove home page
+  - [x] Redirect root route (/) to Updates page
+  - [x] Remove Home from navigation
+  - [x] Move posts feed to /posts route
+  - [x] Update CreatePost to redirect to /posts
 
 ## Notes
-- **Primary Focus**: Discussion platform with posts, comments, and communities
+- **Primary Focus**: Platform updates and announcements (home page)
+- **Home Page**: Updates page showing admin announcements (root route /)
+- **Posts Feed**: Accessible at /posts route
 - **Admin Features**:
   - Admin panel for posting platform updates/announcements
-  - Updates page visible to all users
+  - Updates page visible to all users (now the home page)
   - Admin link in user dropdown menu (only visible to admins)
-  - First user automatically becomes admin
+  - User hawkyt83390 has admin privileges
 - **User Discovery**: Search users by username or email address
 - **Authentication**: Username + password, Google SSO, and Discord OAuth
 - **Messaging Features**:
@@ -54,9 +62,8 @@
   - Images stored in Supabase Storage
   - Messages can contain text, emojis, images, or combinations
 - **Community Features**: Posts, comments, groups, and hashtags
-- **Navigation**: Home → Updates → Messages → Find Users (Trending removed)
+- **Navigation**: Updates (Home) → Messages → Find Users
 - **Branding**: Creative Communities with CC logo
-- **Home Page**: Posts feed (not messages)
 - Discord OAuth with proper error handling and redirect URL
 - Netlify deployment ready with netlify.toml, _redirects, and comprehensive deployment guide
 - Environment variables documented in .env.example
@@ -64,4 +71,4 @@
 - Users can edit their profile (username, bio, avatar)
 - Avatar upload with 1MB size limit to storage bucket
 - Report feature for messages (reports stored but no admin interface to review)
-- Post creation redirects to home page
+- Post creation redirects to /posts page

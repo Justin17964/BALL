@@ -50,8 +50,8 @@ export default function CreatePost() {
         groupIdToUse
       );
       
-      // Navigate to home page instead of post detail to avoid timing issues
-      navigate('/', { state: { message: 'Post created successfully!' } });
+      // Navigate to posts page
+      navigate('/posts', { state: { message: 'Post created successfully!' } });
     } catch (error: any) {
       console.error('Failed to create post:', error);
       setError(error.message || 'Failed to create post. Please try again.');
