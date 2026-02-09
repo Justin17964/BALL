@@ -49,6 +49,23 @@ export interface ReportWithDetails extends Report {
   resolver?: Profile;
 }
 
+export interface Update {
+  id: string;
+  title: string;
+  content: string;
+  author_id: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface UpdateWithDetails extends Update {
+  author: {
+    id: string;
+    username: string;
+    avatar_url: string | null;
+  };
+}
+
 export interface Group {
   id: string;
   name: string;
@@ -124,19 +141,6 @@ export interface Vote {
   comment_id: string | null;
   vote_type: number;
   created_at: string;
-}
-
-export interface Update {
-  id: string;
-  title: string;
-  content: string;
-  author_id: string | null;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface UpdateWithDetails extends Update {
-  author?: Profile;
 }
 
 export type SortType = 'hot' | 'new' | 'top';

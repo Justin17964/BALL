@@ -12,6 +12,8 @@ import Conversation from './pages/Conversation';
 import FindUsers from './pages/FindUsers';
 import Login from './pages/Login';
 import AuthDebug from './pages/AuthDebug';
+import Admin from './pages/Admin';
+import Updates from './pages/Updates';
 import NotFound from './pages/NotFound';
 import type { ReactNode } from 'react';
 
@@ -24,8 +26,23 @@ interface RouteConfig {
 
 const routes: RouteConfig[] = [
   {
-    name: 'Messages',
+    name: 'Home',
     path: '/',
+    element: <Home />
+  },
+  {
+    name: 'Updates',
+    path: '/updates',
+    element: <Updates />
+  },
+  {
+    name: 'Admin',
+    path: '/admin',
+    element: <Admin />
+  },
+  {
+    name: 'Messages',
+    path: '/messages',
     element: <Messages />
   },
   {
@@ -37,11 +54,6 @@ const routes: RouteConfig[] = [
     name: 'Conversation',
     path: '/messages/:userId',
     element: <Conversation />
-  },
-  {
-    name: 'Community',
-    path: '/community',
-    element: <Home />
   },
   {
     name: 'Post Detail',

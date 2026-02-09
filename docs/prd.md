@@ -6,7 +6,7 @@
 Total Chatting Application
 
 ### 1.2 Application Description
-A comprehensive messaging and communication platform where users can connect with others using either their email address or account name. The application focuses on real-time chat functionality, user discovery, and seamless communication between users.
+A comprehensive messaging and communication platform where users can connect with others using either their email address or account name. The application focuses on real-time chat functionality, user discovery, creative communities, and seamless communication between users. The platform includes an admin panel for managing updates and communities.
 
 ## 2. Core Features
 
@@ -48,12 +48,31 @@ A comprehensive messaging and communication platform where users can connect wit
 - Display timestamp for each message
 - Show read/unread status for messages
 
+### 2.6 Creative Communities
+- Users can browse and join creative communities
+- Users can participate in community discussions
+- Users can view community content and posts
+- Users can interact with other community members
+
+### 2.7 Admin Panel
+- Admin authentication and access control
+- Admin can post updates on the app
+- Admin can manage and remove communities
+- Admin dashboard for platform management
+- Admin can view platform statistics and user activity
+
+### 2.8 App Updates
+- Display app updates posted by admin
+- Users can view latest updates and announcements
+- Update notifications for users
+
 ## 3. Functional Requirements
 
 ### 3.1 Authentication Flow
 - Users must sign up or log in to access the platform
 - Support OSS Google login and email/password authentication
 - After successful login, users can access all platform features
+- Admin login with elevated permissions
 
 ### 3.2 Profile Update Flow
 - User accesses their profile settings
@@ -89,11 +108,33 @@ A comprehensive messaging and communication platform where users can connect wit
 - User receives notifications for new messages
 - Unread messages are highlighted
 
+### 3.6 Creative Communities Flow
+- User browses available creative communities
+- User joins communities of interest
+- User participates in community discussions
+- User views community posts and content
+- User interacts with community members
+
+### 3.7 Admin Panel Flow
+- Admin logs in with admin credentials
+- Admin accesses admin dashboard
+- Admin creates and posts app updates
+- Admin manages creative communities
+- Admin removes communities as needed
+- Admin views platform analytics
+
+### 3.8 App Updates Flow
+- Admin posts new update through admin panel
+- Update is published to the platform
+- Users receive notification of new update
+- Users can view update details in updates section
+
 ## 4. Technical Notes
 
 ### 4.1 Authentication
 - Implement OSS Google login for Google authentication
 - Implement email/password authentication with secure password storage
+- Implement role-based access control for admin users
 
 ### 4.2 Data Structure
 - User profile includes account name, email, logo fields, and availability status (Available, Do Not Disturb, Idle)
@@ -102,6 +143,9 @@ A comprehensive messaging and communication platform where users can connect wit
 - Conversation threads linking messages between two users
 - Search index for email addresses and account names
 - Picture messages include image file references
+- Creative communities include community name, description, members, and posts
+- App updates include title, content, timestamp, and admin author
+- Admin users with elevated permissions
 
 ### 4.3 Real-time Communication
 - Implement real-time messaging functionality

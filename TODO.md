@@ -1,4 +1,4 @@
-# Task: Transform into ChatConnect - Real-Time Messaging Platform
+# Task: Creative Communities - Discussion Platform with Admin Panel
 
 ## Plan
 - [x] Step 1: Initialize Supabase and setup database schema
@@ -28,9 +28,22 @@
   - [x] Add image upload to messages
   - [x] Update message display to show images
   - [x] Add image_url column to messages table
+- [x] Step 19: Rebrand back to Creative Communities and add admin features
+  - [x] Create updates table for admin announcements
+  - [x] Create Admin page for managing updates
+  - [x] Create Updates page for viewing announcements
+  - [x] Update navigation (Home → Updates → Messages → Find Users)
+  - [x] Remove Trending hashtags from navigation
+  - [x] Add admin panel link in user menu
+  - [x] Rebrand back to Creative Communities
 
 ## Notes
-- **Primary Focus**: Real-time messaging and user-to-user communication
+- **Primary Focus**: Discussion platform with posts, comments, and communities
+- **Admin Features**:
+  - Admin panel for posting platform updates/announcements
+  - Updates page visible to all users
+  - Admin link in user dropdown menu (only visible to admins)
+  - First user automatically becomes admin
 - **User Discovery**: Search users by username or email address
 - **Authentication**: Username + password, Google SSO, and Discord OAuth
 - **Messaging Features**:
@@ -40,12 +53,10 @@
   - Image preview before sending
   - Images stored in Supabase Storage
   - Messages can contain text, emojis, images, or combinations
-- **Community Features**: Optional posts, comments, groups, and hashtags (secondary features)
-- **Navigation**: Messages → Find Users → Community → Trending
-- **Branding**: ChatConnect with 💬 emoji logo
-- **Home Page**: Messages/conversations list
-- **New Chat**: Button redirects to Find Users page
-- First user becomes admin automatically (role tracked but no admin panel)
+- **Community Features**: Posts, comments, groups, and hashtags
+- **Navigation**: Home → Updates → Messages → Find Users (Trending removed)
+- **Branding**: Creative Communities with CC logo
+- **Home Page**: Posts feed (not messages)
 - Discord OAuth with proper error handling and redirect URL
 - Netlify deployment ready with netlify.toml, _redirects, and comprehensive deployment guide
 - Environment variables documented in .env.example
@@ -53,6 +64,4 @@
 - Users can edit their profile (username, bio, avatar)
 - Avatar upload with 1MB size limit to storage bucket
 - Report feature for messages (reports stored but no admin interface to review)
-- Post creation redirects to community page to avoid timing issues
-- Removed admin-specific API functions (banUser, unbanUser, updateUserRole, getAllProfiles)
-- Kept report functionality for future admin implementation
+- Post creation redirects to home page

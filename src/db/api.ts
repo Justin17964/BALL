@@ -744,3 +744,57 @@ export async function searchGroups(query: string) {
   if (error) throw error;
   return Array.isArray(data) ? data : [];
 }
+
+// Updates API
+export async function getUpdates() {
+  const { data, error } = await supabase
+    .from('updates')
+    .select(`
+      *,
+      author:profiles!updates_author_id_fkey(id, username, avatar_url)
+    `)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return Array.isArray(data) ? data : [];
+}
+
+export async function createUpdate(title: string, content: string) {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error('Not authenticated');
+
+  const { data, error } = await supabase
+    .from('updates')
+    .insert({
+      title,
+      content,
+      author_id: user.id,
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function updateUpdate(id: string, title: string, content: string) {
+  const { error } = await supabase
+    .from('updates')
+    .update({
+      title,
+      content,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', id);
+
+  if (error) throw error;
+}
+
+export async function deleteUpdate(id: string) {
+  const { error } = await supabase
+    .from('updates')
+    .delete()
+    .eq('id', id);
+
+  if (error) throw error;
+}

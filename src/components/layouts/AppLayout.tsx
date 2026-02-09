@@ -4,7 +4,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Home, Users, Hash, User, LogOut, Menu, Plus, MessageCircle } from 'lucide-react';
+import { Home, Users, User, LogOut, Menu, Plus, MessageCircle, Megaphone, Shield } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,10 +23,10 @@ export function AppLayout({ children }: AppLayoutProps) {
   const navigate = useNavigate();
 
   const navItems = [
-    { icon: MessageCircle, label: 'Messages', path: '/' },
+    { icon: Home, label: 'Home', path: '/' },
+    { icon: Megaphone, label: 'Updates', path: '/updates' },
+    { icon: MessageCircle, label: 'Messages', path: '/messages' },
     { icon: Users, label: 'Find Users', path: '/find-users' },
-    { icon: Home, label: 'Community', path: '/community' },
-    { icon: Hash, label: 'Trending', path: '/trending' },
   ];
 
   const handleSignOut = async () => {
@@ -39,9 +39,9 @@ export function AppLayout({ children }: AppLayoutProps) {
       <div className="p-6 border-b border-border">
         <Link to="/" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">💬</span>
+            <span className="text-primary-foreground font-bold text-lg">CC</span>
           </div>
-          <span className="font-bold text-lg">ChatConnect</span>
+          <span className="font-bold text-lg">Creative Communities</span>
         </Link>
       </div>
 
@@ -68,12 +68,12 @@ export function AppLayout({ children }: AppLayoutProps) {
 
       <div className="p-4 border-t border-border">
         <Button
-          onClick={() => navigate('/find-users')}
+          onClick={() => navigate('/create-post')}
           className="w-full"
           size="lg"
         >
           <Plus className="w-5 h-5 mr-2" />
-          New Chat
+          Create Post
         </Button>
       </div>
     </div>
@@ -106,7 +106,7 @@ export function AppLayout({ children }: AppLayoutProps) {
             {/* Logo for mobile */}
             <Link to="/" className="lg:hidden flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">💬</span>
+                <span className="text-primary-foreground font-bold text-lg">CC</span>
               </div>
             </Link>
 
@@ -138,6 +138,15 @@ export function AppLayout({ children }: AppLayoutProps) {
                   <User className="w-4 h-4 mr-2" />
                   Edit Profile
                 </DropdownMenuItem>
+                {profile?.role === 'admin' && (
+                  <>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => navigate('/admin')}>
+                      <Shield className="w-4 h-4 mr-2" />
+                      Admin Panel
+                    </DropdownMenuItem>
+                  </>
+                )}
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleSignOut}>
                   <LogOut className="w-4 h-4 mr-2" />
